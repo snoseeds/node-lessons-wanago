@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as util from 'util';
 
 const writeFile = util.promisify(fs.writeFile);
+const readFile = util.promisify(fs.readFile);
 
 const bashMethods = {
     touch(pathOfFile: string, contentOfFile: string) {
@@ -14,8 +15,18 @@ const bashMethods = {
             })
     },
 
-    echo: function echo(content: string) {
+    echo(content: string) {
         console.log(content)
+    },
+
+    cat(pathOfFile: string, encoding?: BufferEncoding) {
+        readFile(pathOfFile, { encoding })
+            .then((content) => {
+                console.log(content);
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
