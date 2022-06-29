@@ -4,6 +4,7 @@
   "description": "",
   "main": "example.js",
   "scripts": {
+    "event:start": "ts-node ./event-emitter/example.ts",
     "start": "ts-node ./main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
